@@ -12,18 +12,24 @@ export default function Login() {
     e.preventDefault()
     const { error } = await supabase.auth.signInWithPassword({ email, password })
 
-    if (error) {
-      setError(error.message)
-    } else {
+      if (error) {
+          if (error.message === 'Invalid login credentials') {
+              setError('Pogresan email ili lozinka')
+          }
+          else {
+              setError(error.message)
+          }
+      }
+      
+     else {
       navigate('/Pocetna')
       }
 
-      if (error.message === 'Invalid login credentials') {
-          setError('Pogresan email ili lozinka')
+      
     }
 
     
-    }
+    
 
     return (
 
