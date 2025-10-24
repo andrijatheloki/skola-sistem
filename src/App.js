@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import { Button } from '@mui/material';
 import LogoutButton from './components/LogoutButton';
 import { useLocation } from 'react-router-dom';
+import Dokumenti from './pages/Dokumenti';
 
 
 function App() {
@@ -31,6 +32,10 @@ function App() {
                     <Button component={Link} to="/ListaUcenika" variant="outlined" color="primary" sx={{ mr: 2 }}>
                         Lista Ucenika
                     </Button>
+
+                    <Button component={Link} to="/Dokumenti" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        Dokumenti
+                    </Button>
                     
                     <LogoutButton />
                 </nav>
@@ -45,6 +50,7 @@ function App() {
                 <Route path="/Dodaj" element={<PrivateRoute><DodajUcenika /></PrivateRoute>} />
                 <Route path="/ListaUcenika" element={<PrivateRoute><ListaUcenika /></PrivateRoute>} />
                 <Route path="/ucenik/:id" element={<PrivateRoute><ProfilUcenika /></PrivateRoute>} />
+                <Route path="/Dokumenti" element={<PrivateRoute><Dokumenti /></PrivateRoute> }/>
             </Routes>
 
         </>

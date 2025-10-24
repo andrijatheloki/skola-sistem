@@ -26,8 +26,11 @@ export default function Login() {
     }
 
     return (
-        <Box
+
+        <Box //background Box
             sx={{
+                margin: '0',
+                padding: '0',
                 height: '100vh',
                 backgroundImage: 'url(https://cdn.pixabay.com/photo/2016/04/30/14/58/music-1363069_1280.jpg)',
                 backgroundSize: 'cover',
@@ -40,13 +43,14 @@ export default function Login() {
             } }
             >
 
-        <Box
+        <Box //login box
             sx={{
 
                 maxWidth: 500,
                     bgcolor: '#FFFFFF',
-                mx: 'auto',
-                mt: 8,
+                    mx: 'auto',
+                alignItems: 'center',
+                mt: 2,
                 p: 4,
                 border: '2px solid #ccc',
                 borderRadius: 4,
