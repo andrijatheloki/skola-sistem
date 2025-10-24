@@ -7,21 +7,35 @@ import ProfilUcenika from './ProfilUcenika';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
 import { Button } from '@mui/material';
+import LogoutButton from './components/LogoutButton';
+import { useLocation } from 'react-router-dom';
+
 
 function App() {
+
+    const location = useLocation()
+    const currentPath = location.pathname
+
     return (
-        <Router>
-            <nav style={{ padding: 20, background: '#f0f0f0' }}>
-                <Button component={Link} to="/Pocetna" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                    Pocetna
-                </Button>
-                <Button component={Link} to="/Dodaj" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                    Dodaj Ucenika
-                </Button>
-                <Button component={Link} to="/ListaUcenika" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                    Lista Ucenika
-                </Button>
-            </nav>
+       
+        <>
+       
+            {currentPath !== "/Login" &&(
+                <nav style={{ padding: 20, background: '#f0f0f0' }}>
+                    <Button component={Link} to="/Pocetna" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        Pocetna
+                    </Button>
+                    <Button component={Link} to="/Dodaj" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        Dodaj Ucenika
+                    </Button>
+                    <Button component={Link} to="/ListaUcenika" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        Lista Ucenika
+                    </Button>
+                    <LogoutButton />
+                </nav>
+                )}
+
+           
 
             <Routes>
                 <Route path="/Login" element={<Login />} />
@@ -31,7 +45,10 @@ function App() {
                 <Route path="/ListaUcenika" element={<PrivateRoute><ListaUcenika /></PrivateRoute>} />
                 <Route path="/ucenik/:id" element={<PrivateRoute><ProfilUcenika /></PrivateRoute>} />
             </Routes>
-        </Router>
+
+        </>
+
+        
     )
 }
 

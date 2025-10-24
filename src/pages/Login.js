@@ -1,7 +1,7 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { useNavigate } from 'react-router-dom'
-
+import { Box, Button, TextField } from '@mui/material';
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -19,25 +19,73 @@ export default function Login() {
     }
   }
 
-  return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        /><br /><br />
-        <input
-          type="password"
-          placeholder="Lozinka"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        /><br /><br />
-        <button type="submit">Login</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+    return (
+        <Box
+            sx={{
+                height: '100vh',
+                backgroundImage: 'url(https://cdn.pixabay.com/photo/2016/04/30/14/58/music-1363069_1280.jpg)',
+                backgroundSize: 'cover',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+
+
+
+            } }
+            >
+
+        <Box
+            sx={{
+
+                maxWidth: 500,
+                    bgcolor: '#FFFFFF',
+                mx: 'auto',
+                mt: 8,
+                p: 4,
+                border: '2px solid #ccc',
+                borderRadius: 4,
+                boxShadow: 2,
+            }}
+        >
+         <div style={{ padding: '2rem' }}>
+            <h2>Portal za Muzicke Skole</h2>
+                <form onSubmit={handleLogin}>
+
+       <TextField
+                        fullWidth
+                        label="Email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        margin="normal"
+                    />
+
+                    <TextField
+                        fullWidth
+                        label="Lozinka"
+                        type="password"
+                        placeholder="Lozinka"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        />
+       
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        onClick={handleLogin }
+                        sx={{ mt: 2 }}
+                    >
+                        Prijavi se
+                    </Button>
+
+       
       </form>
     </div>
+
+            </Box>
+
+        </Box>
+
   )
 }
