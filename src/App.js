@@ -31,6 +31,7 @@ function App() {
                     <Button component={Link} to="/ListaUcenika" variant="outlined" color="primary" sx={{ mr: 2 }}>
                         Lista Ucenika
                     </Button>
+                    
                     <LogoutButton />
                 </nav>
                 )}

@@ -16,8 +16,14 @@ export default function Login() {
       setError(error.message)
     } else {
       navigate('/Pocetna')
+      }
+
+      if (error.message === 'Invalid login credentials') {
+          setError('Pogresan email ili lozinka')
     }
-  }
+
+    
+    }
 
     return (
         <Box
@@ -70,14 +76,17 @@ export default function Login() {
                         />
        
                     <Button
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        onClick={handleLogin }
-                        sx={{ mt: 2 }}
+                            variant="contained"
+                            color="primary"
+                            fullWidth
+                            type="submit"
+                            sx={{ mt: 2 }}
                     >
                         Prijavi se
-                    </Button>
+                        </Button>
+               {error && <p style={{ color: 'red' }}>{error}   </p>}
+
+                       
 
        
       </form>
