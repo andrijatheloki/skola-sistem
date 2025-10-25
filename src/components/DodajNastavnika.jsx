@@ -5,7 +5,6 @@ import Instrumenti from '../components/Instrumenti';
 
 export default function DodajNastavnika() {
     const [ime, setIme] = useState('');
-    const [prezime, setPrezime] = useState('');
     const [instrument, setInstrument] = useState('');
     const [jmbg, setJMBG] = useState('');
     const [email, setEmail] = useState('');
@@ -21,7 +20,7 @@ export default function DodajNastavnika() {
 
         const { data, error } = await supabase
             .from('nastavnici')
-            .insert([{ ime, prezime, instrument, jmbg, email, kontakt,status,napomena}]);
+            .insert([{ ime, instrument, jmbg, email, kontakt,status,napomena}]);
 
         if (error) {
             console.error(error.message);
@@ -29,13 +28,12 @@ export default function DodajNastavnika() {
 
 
         } else {
-            setPoruka('Ucenik uspesno dodat!');
+            setPoruka('Nastavnik uspešno dodat!');
             setIme('');
-            setPrezime('');
             setInstrument('');
             setJMBG('');
-           
-
+            setKontakt('');
+            setEmail('');
         }
     }
     return (
@@ -54,22 +52,14 @@ export default function DodajNastavnika() {
             <h2>Dodaj Nastavnika</h2>
             <form onSubmit={handleSubmit}>
                 <TextField // IME NASTAVNIKA
-                    label="Ime"
+                    label="Ime i Prezime"
                     fullWidth
                     margin="normal"
                     value={ime}
                     onChange={(e) => setIme(e.target.value)}
                     required
                 />
-                <TextField // PREZIME NASTAVNIKA
-                    label="Prezime"
-                    fullWidth
-                    margin="normal"
-                    value={prezime}
-                    onChange={(e) => setPrezime(e.target.value)}
-                    required
-                />
-                
+                                
                 <FormControl fullWidth margin="normal" required >
                     <InputLabel>Instrument</InputLabel>
                     <Select 

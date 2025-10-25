@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabaseClient';
 import { DataGrid } from '@mui/x-data-grid';
 import { TextField } from '@mui/material';
 import { Chip } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 export default function ListaNastavnika() {
@@ -29,9 +30,17 @@ export default function ListaNastavnika() {
     );
 
     const columns = [
-        { field: 'ime', headerName: 'Ime', flex: 0.5 },
-        { field: 'prezime', headerName: 'Prezime', flex: 0.5 },
-        { field: 'instrument', headerName: 'Instrument', flex: 1 },
+        {
+            field: 'ime', headerName: 'Ime i Prezime', flex: 1,
+            renderCell: (params) => (
+                <Link to={`/profil-nastavnika/${params.row.id}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
+                    {params.value}
+                </Link>
+            )
+
+        },
+       
+        { field: 'instrument', headerName: 'Instrument', flex: 1.5 },
         { field: 'email', headerName: 'Email: ', flex: 1 },
         { field: 'kontakt', headerName: 'Kontakt: ', flex: 1 },
         { field: 'jmbg', headerName: 'JMBG: ', flex: 1 },

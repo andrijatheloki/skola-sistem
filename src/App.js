@@ -13,6 +13,7 @@ import DodajUcenika from './components/DodajUcenika';
 import ListaUcenikaV2 from './pages/ListaUcenikaV2';
 import DodajNastavnika from './components/DodajNastavnika';
 import ListaNastavnika from './pages/ListaNastavnika';
+import ProfilNastavnika from './pages/ProfilNastavnika';
 
 
 
@@ -52,6 +53,10 @@ function App() {
                     <Button component={Link} to="/ListaNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
                         Lista Nastavnika
                     </Button>
+
+                    <Button component={Link} to="/ProfilNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        ProfilNastavnika
+                    </Button>
                     
                     <LogoutButton />
                 </nav>
@@ -68,8 +73,10 @@ function App() {
                 <Route path="/ListaUcenikaV2" element={<PrivateRoute><ListaUcenikaV2 /></PrivateRoute>} />
                 <Route path="/ucenik/:id" element={<PrivateRoute><ProfilUcenika /></PrivateRoute>} />
                 <Route path="/Dokumenti" element={<PrivateRoute><Dokumenti /></PrivateRoute>} />
-                <Route path="/DodajNastavnika" element={<privateRoute><DodajNastavnika /></privateRoute>} />
-                <Route path="/ListaNastavnika" element={<privateRoute><ListaNastavnika/></privateRoute> } />
+                <Route path="/DodajNastavnika" element={<PrivateRoute><DodajNastavnika /></PrivateRoute>} />
+                <Route path="/ListaNastavnika" element={<PrivateRoute><ListaNastavnika /></PrivateRoute>} />
+                <Route path="/profil-nastavnika/:id" element={<PrivateRoute><ProfilNastavnika /></PrivateRoute>} />
+
             </Routes>
 
         </>
