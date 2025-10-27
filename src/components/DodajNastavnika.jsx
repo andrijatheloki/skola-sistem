@@ -14,28 +14,47 @@ export default function DodajNastavnika() {
     const [poruka, setPoruka] = useState('');
     
     
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const { data, error } = await supabase
-            .from('nastavnici')
-            .insert([{ ime, instrument, jmbg, email, kontakt,status,napomena}]);
+        const payload = {
+            ime,
+            email,
+            jmbg,
+            instrument,
+            kontakt,
+            napomena,
+            status,
+            password: 'nastavnik123',
+            role: 'nastavnik'
+        };
 
-        if (error) {
-            console.error(error.message);
-            setPoruka('Greska: ' + error.message);
+        // 🔹 1. Uzmi token
+        const { data: { session } } = await supabase.auth.getSession();
+        const token = session?.access_token;
 
+        // 🔹 2. Pošalji ga u fetch
+        const res = await fetch('https://ecexjbhzwlrjmrdwomsc.functions.supabase.co/dodaj-nastavnika-auth', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(payload)
+        });
 
+        const result = await res.json();
+        console.log('Rezultat funkcije:', result);
+
+        if (res.ok) {
+            setPoruka('Nastavnik uspešno dodat i kreiran!');
         } else {
-            setPoruka('Nastavnik uspešno dodat!');
-            setIme('');
-            setInstrument('');
-            setJMBG('');
-            setKontakt('');
-            setEmail('');
+            setPoruka('Greška: ' + (result.error || result.message));
         }
-    }
+    };
+
     return (
         <Box
             sx={{
@@ -92,6 +111,7 @@ export default function DodajNastavnika() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
+
                 
                 
                 <TextField // JMBG
