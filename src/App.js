@@ -14,6 +14,7 @@ import ListaUcenikaV2 from './pages/ListaUcenikaV2';
 import DodajNastavnika from './components/DodajNastavnika';
 import ListaNastavnika from './pages/ListaNastavnika';
 import ProfilNastavnika from './pages/ProfilNastavnika';
+import MojProfil from './pages/MojProfil';
 
 
 
@@ -54,10 +55,25 @@ function App() {
                         Lista Nastavnika
                     </Button>
 
-                    <Button component={Link} to="/ProfilNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                        ProfilNastavnika
+                    <Button
+                        component={Link}
+                        to="/mojprofil"
+                        variant="contained"
+                        color="primary"
+                        sx={{
+                            position: 'fixed',
+                            top: 20,
+                            right: 20,
+                            zIndex: 9999, // da bude iznad svega
+                            borderRadius: '20px',
+                            boxShadow: 3
+                        }}
+                    >
+                        Moj Profil
                     </Button>
+
                     
+
                     <LogoutButton />
                 </nav>
                 )}
@@ -76,6 +92,7 @@ function App() {
                 <Route path="/DodajNastavnika" element={<PrivateRoute><DodajNastavnika /></PrivateRoute>} />
                 <Route path="/ListaNastavnika" element={<PrivateRoute><ListaNastavnika /></PrivateRoute>} />
                 <Route path="/profil-nastavnika/:id" element={<PrivateRoute><ProfilNastavnika /></PrivateRoute>} />
+                <Route path="/MojProfil" element={<PrivateRoute><MojProfil /></PrivateRoute>} />
 
             </Routes>
 

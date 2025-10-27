@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Loki\\Desktop\\skola-sistem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\Dokumenti.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Dokumenti.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\DodajNastavnika.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\DodajNastavnika.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\MojProfil.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\MojProfil.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ProfilNastavnika.jsx||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\ProfilNastavnika.jsx||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ListaNastavnika.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\ListaNastavnika.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\Dokumenti.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Dokumenti.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ListaUcenikaV2.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -23,16 +35,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\ListaUcenika.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ProfilNastavnika.jsx||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\ProfilNastavnika.jsx||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\ProfilUcenika.jsx||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\ProfilUcenika.jsx||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\Instrumenti.js||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -82,35 +86,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "MojProfil.jsx",
+              "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\MojProfil.jsx",
+              "RelativeDocumentMoniker": "src\\pages\\MojProfil.jsx",
+              "ToolTip": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\MojProfil.jsx",
+              "RelativeToolTip": "src\\pages\\MojProfil.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-10-27T20:41:39.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ProfilNastavnika.jsx",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ProfilNastavnika.jsx",
               "RelativeDocumentMoniker": "src\\pages\\ProfilNastavnika.jsx",
               "ToolTip": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ProfilNastavnika.jsx",
               "RelativeToolTip": "src\\pages\\ProfilNastavnika.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAcwJkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-10-25T09:17:57.265Z"
+              "WhenOpened": "2025-10-25T09:17:57.265Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ListaNastavnika.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ListaNastavnika.js",
               "RelativeDocumentMoniker": "src\\pages\\ListaNastavnika.js",
               "ToolTip": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ListaNastavnika.js",
               "RelativeToolTip": "src\\pages\\ListaNastavnika.js",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAADQAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAQwCcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-24T15:49:39.757Z"
+              "WhenOpened": "2025-10-24T15:49:39.757Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Instrumenti.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\Instrumenti.js",
               "RelativeDocumentMoniker": "src\\components\\Instrumenti.js",
@@ -122,20 +141,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "DodajNastavnika.jsx",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\DodajNastavnika.jsx",
               "RelativeDocumentMoniker": "src\\components\\DodajNastavnika.jsx",
               "ToolTip": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\DodajNastavnika.jsx",
               "RelativeToolTip": "src\\components\\DodajNastavnika.jsx",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwBsAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAQwB0AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2025-10-24T12:29:37.011Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "ListaUcenika.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ListaUcenika.js",
               "RelativeDocumentMoniker": "src\\pages\\ListaUcenika.js",
@@ -147,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Dokumenti.jsx",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\Dokumenti.jsx",
               "RelativeDocumentMoniker": "src\\pages\\Dokumenti.jsx",
@@ -160,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ProfilUcenika.jsx",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\ProfilUcenika.jsx",
               "RelativeDocumentMoniker": "src\\ProfilUcenika.jsx",
@@ -172,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "supabaseClient.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\lib\\supabaseClient.js",
               "RelativeDocumentMoniker": "src\\lib\\supabaseClient.js",
@@ -184,7 +203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "PrivateRoute.jsx",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\PrivateRoute.jsx",
               "RelativeDocumentMoniker": "src\\components\\PrivateRoute.jsx",
@@ -196,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Login.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\Login.js",
               "RelativeDocumentMoniker": "src\\pages\\Login.js",
@@ -208,19 +227,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "App.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\App.js",
               "RelativeDocumentMoniker": "src\\App.js",
               "ToolTip": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\App.js",
               "RelativeToolTip": "src\\App.js",
-              "ViewState": "AgIAACsAAAAAAAAAAAAAAE0AAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-23T18:16:17.009Z"
+              "WhenOpened": "2025-10-23T18:16:17.009Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "ListaUcenikaV2.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\ListaUcenikaV2.js",
               "RelativeDocumentMoniker": "src\\pages\\ListaUcenikaV2.js",
@@ -232,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "App.test.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\App.test.js",
               "RelativeDocumentMoniker": "src\\App.test.js",
@@ -244,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "index.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\index.js",
               "RelativeDocumentMoniker": "src\\index.js",
@@ -256,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "index.css",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\index.css",
               "RelativeDocumentMoniker": "src\\index.css",
@@ -268,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "LogoutButton.jsx",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\LogoutButton.jsx",
               "RelativeDocumentMoniker": "src\\components\\LogoutButton.jsx",
@@ -280,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Pocetna.js",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\pages\\Pocetna.js",
               "RelativeDocumentMoniker": "src\\pages\\Pocetna.js",
@@ -292,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "App.css",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\App.css",
               "RelativeDocumentMoniker": "src\\App.css",
