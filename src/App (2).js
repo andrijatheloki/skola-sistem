@@ -16,59 +16,44 @@ import ListaNastavnika from './pages/ListaNastavnika';
 import ProfilNastavnika from './pages/ProfilNastavnika';
 import MojProfil from './pages/MojProfil';
 
-import { UserProvider } from './context/UserContext';
-import { useUser } from './context/UserContext';
 
-function AppContent() {
-    const location = useLocation();
-    const currentPath = location.pathname;
-    const { role, loading } = useUser();
 
-    if (loading) return null;
+function App() {
+
+    const location = useLocation()
+    const currentPath = location.pathname
 
     return (
+       
         <>
-
-            {currentPath !== "/Login" && (
+       
+            {currentPath !== "/Login" &&(
                 <nav style={{ padding: 20, background: '#f0f0f0' }}>
                     <Button component={Link} to="/Pocetna" variant="outlined" color="primary" sx={{ mr: 2 }}>
                         Pocetna
                     </Button>
-
-                    {role === 'admin' && (
-                        <>
-                            <Button component={Link} to="/Dodaj" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                                Dodaj Ucenika
-                            </Button>
-
-                            <Button component={Link} to="/Dokumenti" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                                Dokumenti
-                            </Button>
-                            <Button component={Link} to="/DodajNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                                Dodaj Nastavnika
-                            </Button>
-                            <Button component={Link} to="/ListaNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                                Lista Nastavnika
-                            </Button>
-                        </>
-
-
-
-                    ) }
-                    
+                    <Button component={Link} to="/Dodaj" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        Dodaj Ucenika
+                    </Button>
                     <Button component={Link} to="/ListaUcenika" variant="outlined" color="primary" sx={{ mr: 2 }}>
                         Lista Ucenika
                     </Button>
 
-                    
+                    <Button component={Link} to="/Dokumenti" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        Dokumenti
+                    </Button>
 
                     <Button component={Link} to="/ListaUcenikaV2" variant="outlined" color="primary" sx={{ mr: 2 }}>
                         ListaUcenika V2
                     </Button>
 
-                    
+                    <Button component={Link} to="/DodajNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        Dodaj Nastavnika
+                    </Button>
 
-                    
+                    <Button component={Link} to="/ListaNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        Lista Nastavnika
+                    </Button>
 
                     <Button
                         component={Link}
@@ -87,19 +72,19 @@ function AppContent() {
                         Moj Profil
                     </Button>
 
-
+                    
 
                     <LogoutButton />
                 </nav>
-            )}
+                )}
 
-
+           
 
             <Routes>
                 <Route path="/Login" element={<Login />} />
                 <Route path="/" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
                 <Route path="/Pocetna" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
-                <Route path="/Dodaj" element={<PrivateRoute><DodajUcenika /></PrivateRoute>} />
+                <Route path="/Dodaj" element={<PrivateRoute><DodajUcenika /></PrivateRoute>}  />
                 <Route path="/ListaUcenika" element={<PrivateRoute><ListaUcenika /></PrivateRoute>} />
                 <Route path="/ListaUcenikaV2" element={<PrivateRoute><ListaUcenikaV2 /></PrivateRoute>} />
                 <Route path="/ucenik/:id" element={<PrivateRoute><ProfilUcenika /></PrivateRoute>} />
@@ -110,26 +95,6 @@ function AppContent() {
                 <Route path="/MojProfil" element={<PrivateRoute><MojProfil /></PrivateRoute>} />
 
             </Routes>
-
-        </>
-    )
-}
-
-function App() {
-
-    return (
-       
-       
-        <>
-            <UserProvider>
-               
-                    <AppContent />
-
-
-                
-
-            </UserProvider>
-            
 
         </>
 
