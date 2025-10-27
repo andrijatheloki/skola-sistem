@@ -4,7 +4,8 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useState } from 'react';
 
 const rows = [
-    { id: 1, naziv: 'Ugovor o radu', opis: 'Za zaposlenog Marka', link: '/docs/ugovor-marko.pdf' },
+    {
+        id: 1, naziv: 'Ugovor o radu', opis: 'Za zaposlenog Marka', link:' https://drive.google.com/file/d/0BywwXUpD0-HgODBiWWptT2pnYkJldHNaV2taLTJPaHFwbkc0/view?usp=sharing&resourcekey=0-cZnaG3ze18N6bCm_kPaVXg' },
     { id: 2, naziv: 'Upisnica', opis: 'Učenik Petar', link: '/docs/upisnica-petar.pdf' },
     { id: 3, naziv: 'Rešenje o prijemu', opis: 'Zaposleni Jovana', link: '/docs/resenje-jovana.pdf' },
     { id: 4, naziv: 'Zapisnik sa sednice', opis: 'Savet nastavnika, mart 2023', link: '/docs/zapisnik-mart.pdf' },
