@@ -7,7 +7,9 @@ export default function LogoutButton() {
 
     const handleLogout = async () => {
         await supabase.auth.signOut()
-        navigate ('/Login')
+        navigate('/Login')
+
+
     }
 
 
@@ -15,7 +17,9 @@ export default function LogoutButton() {
         
 
         <Button onClick={handleLogout} variant="outlined" color="primary" sx={{ mr: 2 }}>
-        Logout
+            Logout
+
+
         </Button>
 
 

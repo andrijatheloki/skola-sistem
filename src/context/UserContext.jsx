@@ -57,6 +57,15 @@ export function UserProvider({ children }) {
 
         fetchUserData();
 
+        const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+
+            fetchUserData();
+        });
+
+        return () => {
+            listener.subscription.unsubscribe();
+        }
+
 
     }, []);
 
