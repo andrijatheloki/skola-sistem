@@ -1,13 +1,12 @@
 ﻿import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { UserProvider, useUser } from './context/UserContext';
+
 import Pocetna from './pages/Pocetna';
 import ListaUcenika from './pages/ListaUcenika';
 import ProfilUcenika from './ProfilUcenika';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
-import { Button } from '@mui/material';
-import LogoutButton from './components/LogoutButton';
-import { useLocation } from 'react-router-dom';
 import Dokumenti from './pages/Dokumenti';
 import DodajUcenika from './components/DodajUcenika';
 import ListaUcenikaV2 from './pages/ListaUcenikaV2';
@@ -15,126 +14,51 @@ import DodajNastavnika from './components/DodajNastavnika';
 import ListaNastavnika from './pages/ListaNastavnika';
 import ProfilNastavnika from './pages/ProfilNastavnika';
 import MojProfil from './pages/MojProfil';
+import ResetPassword from './pages/resetpassword';
+import ZaboravljenaSifra from './pages/zaboravljenasifra';
 
-import { UserProvider } from './context/UserContext';
-import { useUser } from './context/UserContext';
+import Sidebar from './components/Sidebar'; // sidebar sa menijem
 
+// Wrapper da koristimo `useLocation` unutar App
 function AppContent() {
     const location = useLocation();
     const currentPath = location.pathname;
     const { role, loading } = useUser();
 
-    if (loading) return null;
+    if (loading) return null; // ili loading spinner
 
     return (
         <>
+            {currentPath !== "/Login" && <Sidebar />}
 
-            {currentPath !== "/Login" && (
-                <nav style={{ padding: 20, background: '#f0f0f0' }}>
-                    <Button component={Link} to="/Pocetna" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                        Pocetna
-                    </Button>
-
-                    {role === 'admin' && (
-                        <>
-                            <Button component={Link} to="/Dodaj" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                                Dodaj Ucenika
-                            </Button>
-
-                            <Button component={Link} to="/Dokumenti" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                                Dokumenti
-                            </Button>
-                            <Button component={Link} to="/DodajNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                                Dodaj Nastavnika
-                            </Button>
-                            <Button component={Link} to="/ListaNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                                Lista Nastavnika
-                            </Button>
-                        </>
-
-
-
-                    ) }
-                    
-                    <Button component={Link} to="/ListaUcenika" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                        Lista Ucenika
-                    </Button>
-
-                    
-
-                    <Button component={Link} to="/ListaUcenikaV2" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                        ListaUcenika V2
-                    </Button>
-
-                    
-
-                    
-
-                    <Button
-                        component={Link}
-                        to="/mojprofil"
-                        variant="contained"
-                        color="primary"
-                        sx={{
-                            position: 'fixed',
-                            top: 20,
-                            right: 20,
-                            zIndex: 9999, // da bude iznad svega
-                            borderRadius: '20px',
-                            boxShadow: 3
-                        }}
-                    >
-                        Moj Profil
-                    </Button>
-
-
-
-                    <LogoutButton />
-                </nav>
-            )}
-
-
-
-            <Routes>
-                <Route path="/Login" element={<Login />} />
-                <Route path="/" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
-                <Route path="/Pocetna" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
-                <Route path="/Dodaj" element={<PrivateRoute><DodajUcenika /></PrivateRoute>} />
-                <Route path="/ListaUcenika" element={<PrivateRoute><ListaUcenika /></PrivateRoute>} />
-                <Route path="/ListaUcenikaV2" element={<PrivateRoute><ListaUcenikaV2 /></PrivateRoute>} />
-                <Route path="/ucenik/:id" element={<PrivateRoute><ProfilUcenika /></PrivateRoute>} />
-                <Route path="/Dokumenti" element={<PrivateRoute><Dokumenti /></PrivateRoute>} />
-                <Route path="/DodajNastavnika" element={<PrivateRoute><DodajNastavnika /></PrivateRoute>} />
-                <Route path="/ListaNastavnika" element={<PrivateRoute><ListaNastavnika /></PrivateRoute>} />
-                <Route path="/profil-nastavnika/:id" element={<PrivateRoute><ProfilNastavnika /></PrivateRoute>} />
-                <Route path="/MojProfil" element={<PrivateRoute><MojProfil /></PrivateRoute>} />
-
-            </Routes>
-
+            <div style={{ marginLeft: currentPath !== "/Login" ? 260 : 0, padding: 20 }}>
+                <Routes>
+                    <Route path="/Login" element={<Login />} />
+                    <Route path="/" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
+                    <Route path="/Pocetna" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
+                    <Route path="/DodajUcenika" element={<PrivateRoute><DodajUcenika /></PrivateRoute>} />
+                    <Route path="/ListaUcenika" element={<PrivateRoute><ListaUcenika /></PrivateRoute>} />
+                    <Route path="/ListaUcenikaV2" element={<PrivateRoute><ListaUcenikaV2 /></PrivateRoute>} />
+                    <Route path="/ucenik/:id" element={<PrivateRoute><ProfilUcenika /></PrivateRoute>} />
+                    <Route path="/Dokumenti" element={<PrivateRoute><Dokumenti /></PrivateRoute>} />
+                    <Route path="/DodajNastavnika" element={<PrivateRoute><DodajNastavnika /></PrivateRoute>} />
+                    <Route path="/ListaNastavnika" element={<PrivateRoute><ListaNastavnika /></PrivateRoute>} />
+                    <Route path="/profil-nastavnika/:id" element={<PrivateRoute><ProfilNastavnika /></PrivateRoute>} />
+                    <Route path="/MojProfil" element={<PrivateRoute><MojProfil /></PrivateRoute>} />
+                    <Route path="/resetpassword" element={<PrivateRoute><ResetPassword /></PrivateRoute>} />
+                    <Route path="/ZaboravljenaSifra" element={<ZaboravljenaSifra />} />
+                </Routes>
+            </div>
         </>
-    )
+    );
 }
 
-function App() {
-
+export default function App() {
     return (
-       
-       
-        <>
-            <UserProvider>
-               
-                    <AppContent />
-
-
-                
-
-            </UserProvider>
+        <UserProvider>
             
-
-        </>
-
-        
-    )
+                <AppContent />
+            
+        </UserProvider>
+    );
 }
-
-export default App;

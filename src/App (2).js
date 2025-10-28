@@ -15,45 +15,69 @@ import DodajNastavnika from './components/DodajNastavnika';
 import ListaNastavnika from './pages/ListaNastavnika';
 import ProfilNastavnika from './pages/ProfilNastavnika';
 import MojProfil from './pages/MojProfil';
+import ResetPassword from './pages/resetpassword';
+import ZaboravljenaSifra from './pages/zaboravljenasifra';
 
+import { UserProvider } from './context/UserContext';
+import { useUser } from './context/UserContext';
 
+function AppContent() {
+    const location = useLocation();
+    const currentPath = location.pathname;
+    const { role, loading } = useUser();
 
-function App() {
-
-    const location = useLocation()
-    const currentPath = location.pathname
+    if (loading) return null;
 
     return (
-       
         <>
-       
-            {currentPath !== "/Login" &&(
+
+            {currentPath !== "/Login" && (
                 <nav style={{ padding: 20, background: '#f0f0f0' }}>
                     <Button component={Link} to="/Pocetna" variant="outlined" color="primary" sx={{ mr: 2 }}>
                         Pocetna
                     </Button>
-                    <Button component={Link} to="/Dodaj" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                        Dodaj Ucenika
-                    </Button>
+
+                    {role === 'admin' && (
+                        <>
+                            <Button component={Link} to="/DodajUcenika" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                                Dodaj Ucenika
+                            </Button>
+
+                            <Button component={Link} to="/Dokumenti" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                                Dokumenti
+                            </Button>
+                            <Button component={Link} to="/DodajNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                                Dodaj Nastavnika
+                            </Button>
+                            <Button component={Link} to="/ListaNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                                Lista Nastavnika
+                            </Button>
+                        </>
+
+
+
+                    ) }
+                    
                     <Button component={Link} to="/ListaUcenika" variant="outlined" color="primary" sx={{ mr: 2 }}>
                         Lista Ucenika
                     </Button>
 
-                    <Button component={Link} to="/Dokumenti" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                        Dokumenti
-                    </Button>
+                    
 
                     <Button component={Link} to="/ListaUcenikaV2" variant="outlined" color="primary" sx={{ mr: 2 }}>
                         ListaUcenika V2
                     </Button>
 
-                    <Button component={Link} to="/DodajNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                        Dodaj Nastavnika
+                    
+                    <Button component={Link} to="/resetpassword" variant="outlined" color="primary" sx={{ mr: 2 }}>
+                        ResetPassword
                     </Button>
 
-                    <Button component={Link} to="/ListaNastavnika" variant="outlined" color="primary" sx={{ mr: 2 }}>
-                        Lista Nastavnika
-                    </Button>
+
+
+                    {role !== 'admin' && (
+
+                    
 
                     <Button
                         component={Link}
@@ -72,19 +96,21 @@ function App() {
                         Moj Profil
                     </Button>
 
-                    
+                    )}
+
+
 
                     <LogoutButton />
                 </nav>
-                )}
+            )}
 
-           
+
 
             <Routes>
                 <Route path="/Login" element={<Login />} />
                 <Route path="/" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
                 <Route path="/Pocetna" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
-                <Route path="/Dodaj" element={<PrivateRoute><DodajUcenika /></PrivateRoute>}  />
+                <Route path="/DodajUcenika" element={<PrivateRoute><DodajUcenika /></PrivateRoute>} />
                 <Route path="/ListaUcenika" element={<PrivateRoute><ListaUcenika /></PrivateRoute>} />
                 <Route path="/ListaUcenikaV2" element={<PrivateRoute><ListaUcenikaV2 /></PrivateRoute>} />
                 <Route path="/ucenik/:id" element={<PrivateRoute><ProfilUcenika /></PrivateRoute>} />
@@ -93,8 +119,30 @@ function App() {
                 <Route path="/ListaNastavnika" element={<PrivateRoute><ListaNastavnika /></PrivateRoute>} />
                 <Route path="/profil-nastavnika/:id" element={<PrivateRoute><ProfilNastavnika /></PrivateRoute>} />
                 <Route path="/MojProfil" element={<PrivateRoute><MojProfil /></PrivateRoute>} />
+                <Route path="/resetpassword" element={<PrivateRoute><ResetPassword /></PrivateRoute>} />
+                <Route path="/ZaboravljenaSifra" element={<ZaboravljenaSifra />} />
 
             </Routes>
+
+        </>
+    )
+}
+
+function App() {
+
+    return (
+       
+       
+        <>
+            <UserProvider>
+               
+                    <AppContent />
+
+
+                
+
+            </UserProvider>
+            
 
         </>
 

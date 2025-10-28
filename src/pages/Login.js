@@ -2,6 +2,7 @@
 import { supabase } from '../lib/supabaseClient'
 import { useNavigate } from 'react-router-dom'
 import { Box, Button, TextField } from '@mui/material';
+import { Link } from 'react-router-dom';
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -96,7 +97,11 @@ export default function Login() {
                         </Button>
                {error && <p style={{ color: 'red' }}>{error}   </p>}
 
-                       
+                        <Link to={`/ZaboravljenaSifra`} style={{ textDecoration: 'none', color: '#1976d2' }}>
+                            <h7>Zaboravljena Sifra</h7>
+                            
+                        </Link>
+                        
 
        
       </form>
