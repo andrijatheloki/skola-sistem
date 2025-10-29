@@ -14,6 +14,7 @@ export default function DodajUcenika() {
     const [poruka, setPoruka] = useState('');
     const [nastavnici, setNastavnici] = useState([]);
     const [izabraniNastavnik, setIzabraniNastavnik] = useState('');
+    const [email, setEmail] = useState('');
 
     useEffect(() => {
         const fetchNastavnici = async () => { // Ucitavanje nastavnika za padajucu listu
@@ -35,7 +36,7 @@ export default function DodajUcenika() {
 
         const { data, error } = await supabase
             .from('ucenici')
-            .insert([{ ime, prezime, instrument, nastavnik_uuid: izabraniNastavnik, jmbg, klasa, razred: parseInt(razred) }]);
+            .insert([{ ime, prezime, instrument, nastavnik_uuid: izabraniNastavnik, jmbg,email, kontakt, razred: parseInt(razred) }]);
 
         if (error) {
             console.error(error.message);
@@ -80,14 +81,7 @@ export default function DodajUcenika() {
                     onChange={(e) => setPrezime(e.target.value)}
                     required
                 /> */}
-                <TextField
-                    label="Kontakt"
-                    fullWidth
-                    margin="normal"
-                    value={kontakt}
-                    onChange={(e) => setKontakt(e.target.value)}
-                    required
-                />
+                
                 <FormControl fullWidth margin="normal" required>
                     <InputLabel>Instrument</InputLabel>
                     <Select
@@ -130,6 +124,26 @@ export default function DodajUcenika() {
 
                 />
 
+
+                <TextField
+                    label="Email"
+                    fullWidth
+                    margin="normal"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+
+                />
+
+                <TextField
+                    label="Kontakt Telefon:"
+                    fullWidth
+                    margin="normal"
+                    value={kontakt}
+                    onChange={(e) => setKontakt(e.target.value)}
+                    required
+
+                />
                 <TextField
                     select
                     label="Razred"

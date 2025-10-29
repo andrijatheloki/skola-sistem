@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabaseClient';
 import { DataGrid } from '@mui/x-data-grid';
 import { TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { Chip } from '@mui/material';
 
 
 export default function ListaUcenika() {
@@ -73,6 +74,30 @@ export default function ListaUcenika() {
         },
         { field: 'kontakt', headerName: 'Kontakt ', flex: 1 },
         { field: 'jmbg', headerName: 'JMBG: ', flex: 1 },
+            {
+        field: 'status',
+        headerName: 'Status učenika',
+        flex: 1,
+        renderCell: (params) => {
+            let color = 'black';
+            switch (params.value) {
+                case 'Aktivan':
+                    color = 'success';
+                    break;
+                case 'Ispisuje se':
+                    color = 'warning';
+                    break;
+                case 'Ispisan':
+                    color = 'error';
+                    break;
+                default: color = 'normal';
+            }
+            return <Chip label={params.value} color={color} />;
+                    
+
+           
+        }
+    }
     ];
 
     return (

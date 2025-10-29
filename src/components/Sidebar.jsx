@@ -64,8 +64,8 @@ export default function Sidebar() {
 
 
 
-                {role === 'nastavnik' &&(
-                    
+                {role === 'nastavnik' && (
+
                     <>
                         <ListItemButton component={Link} to="/Pocetna" selected={location.pathname === "/Pocetna"} sx={navButtonStyle(location.pathname, "/Pocetna")}>
                             <ListItemText primary="Pocetna" />
@@ -81,9 +81,14 @@ export default function Sidebar() {
                         <ListItemButton component={Link} to="/Dokumenti" selected={location.pathname === "/Dokumenti"} sx={navButtonStyle(location.pathname, "/Dokumenti")}>
                             <ListItemText primary="Moji Planovi" />
                         </ListItemButton>
+                        
+                        <ListItemButton onClick={handleLogout} variant="outlined" color="primary" sx={navButtonStyle(location.pathname, "")}>
+                            <ListItemText primary="Logout" />
+
+                        </ListItemButton>
                     </>
-                    
-                    
+
+
 
                 )}
 
@@ -146,13 +151,14 @@ export default function Sidebar() {
                                 </ListItemButton>
                             </List>
                         </Collapse>
+                        <ListItemButton onClick={handleLogout} variant="outlined" color="primary" sx={navButtonStyle(location.pathname, "")}>
+                            <ListItemText primary="Logout" />
+
+                        </ListItemButton>
                     </>
                 )}
 
-                <ListItemButton onClick={handleLogout} variant="outlined" color="primary" sx={navButtonStyle(location.pathname, "")}>
-                    <ListItemText primary="Logout" />
 
-                </ListItemButton>
 
 
 

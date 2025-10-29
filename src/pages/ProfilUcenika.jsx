@@ -125,29 +125,11 @@ export default function ProfilNastavnika() {
             
 
             <Box mt={2}>
-                <Typography><strong>Status plana:</strong></Typography>
-                <Chip label={ucenik.status || 'Nije Spreman'} color={ucenik.status === 'Spreman' ? 'success' : 'error'} />
+                <Typography><strong>Status ucenika:</strong></Typography>
+                <Chip label={ucenik.status || 'Aktivan'} color={ucenik.status === 'Aktivan' ? 'success' : 'error'} />
             </Box>
 
-            <Box mt={2}>
-                <Typography><strong>Plan i program:</strong></Typography>
-
-                {ucenik.status === 'Nije Spreman' || !ucenik.status ? (
-                    <Typography variant="h7" gutterBottom>
-                        Nije Spreman Plan.
-                    </Typography>
-
-                ) : (
-                        <Link href={ucenik.plan_link || '#'} target="_blank">
-                            Otvori plan
-                        </Link>
-                )
-                
-                
-                    
-                }
-                
-            </Box>
+            
         </Box>
     );
 }

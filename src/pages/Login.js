@@ -36,11 +36,17 @@ export default function Login() {
 
         <Box //background Box
             sx={{
-                margin: '0',
-                padding: '0',
-                height: '100vh',
+                margin: 0,
+                padding: 0,
+                minHeight: '100vh',
+                width: '100vw',
+                position: 'fixed',
+                top: 0,
+                left: 0,
                 backgroundImage: 'url(https://cdn.pixabay.com/photo/2016/04/30/14/58/music-1363069_1280.jpg)',
                 backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
