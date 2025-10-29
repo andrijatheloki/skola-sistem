@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { Box, TextField, Button, MenuItem, FormControl, InputLabel, Select } from '@mui/material';
 import Instrumenti from '../components/Instrumenti';
@@ -12,14 +12,30 @@ export default function DodajUcenika() {
     const [klasa, setKlasa] = useState('');
     const [kontakt, setKontakt] = useState('');
     const [poruka, setPoruka] = useState('');
-    
+    const [nastavnici, setNastavnici] = useState([]);
+    const [izabraniNastavnik, setIzabraniNastavnik] = useState('');
 
-    const handleSubmit = async (e) => {
+    useEffect(() => {
+        const fetchNastavnici = async () => { // Ucitavanje nastavnika za padajucu listu
+            const { data, error } = await supabase.from('nastavnici').select('*');
+            if (error) {
+                console.error('Greška pri učitavanju:', error.message);
+            } else {
+                setNastavnici(data);
+            }
+
+        };
+
+        fetchNastavnici();
+    }, []);
+
+
+    const handleSubmit = async (e) => { // Ucitavanje ucenika iz baze
         e.preventDefault();
 
         const { data, error } = await supabase
             .from('ucenici')
-            .insert([{ ime, prezime, instrument, kontakt, jmbg , klasa, razred: parseInt(razred) }]);
+            .insert([{ ime, prezime, instrument, nastavnik_uuid: izabraniNastavnik, jmbg, klasa, razred: parseInt(razred) }]);
 
         if (error) {
             console.error(error.message);
@@ -49,21 +65,21 @@ export default function DodajUcenika() {
             <h2>Dodaj Učenika</h2>
             <form onSubmit={handleSubmit}>
                 <TextField
-                    label="Ime"
+                    label="Ime i Prezime"
                     fullWidth
                     margin="normal"
                     value={ime}
                     onChange={(e) => setIme(e.target.value)}
                     required
                 />
-                <TextField
+                {/* <TextField
                     label="Prezime"
                     fullWidth
                     margin="normal"
                     value={prezime}
                     onChange={(e) => setPrezime(e.target.value)}
                     required
-                />
+                /> */}
                 <TextField
                     label="Kontakt"
                     fullWidth
@@ -87,16 +103,23 @@ export default function DodajUcenika() {
                     </Select>
                 </FormControl>
 
-                
-                <TextField
-                    label="Klasa"
-                    fullWidth
-                    margin="normal"
-                    value={klasa}
-                    onChange={(e) => setKlasa(e.target.value)}
-                    required
+                <FormControl fullWidth margin="normal" required>
+                    <InputLabel>Nastavnik</InputLabel>
+                    <Select
+                        value={izabraniNastavnik}
+                        onChange={(e) => setIzabraniNastavnik(e.target.value)}
+                        label="Nastavnik"
+                    >
+                        {nastavnici.map((nast) => (
+                            <MenuItem key={nast.id} value={nast.id}>
+                                {nast.ime}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
 
-                />
+
+
                 <TextField
                     label="JMBG"
                     fullWidth

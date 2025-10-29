@@ -4,7 +4,6 @@ import { UserProvider, useUser } from './context/UserContext';
 
 import Pocetna from './pages/Pocetna';
 import ListaUcenika from './pages/ListaUcenika';
-import ProfilUcenika from './ProfilUcenika';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
 import Dokumenti from './pages/Dokumenti';
@@ -17,6 +16,8 @@ import MojProfil from './pages/MojProfil';
 import ResetPassword from './pages/resetpassword';
 import ZaboravljenaSifra from './pages/zaboravljenasifra';
 import PocetnaAdmin from './pages/PocetnaAdmin';
+import MojiUcenici from './pages/MojiUcenici';
+import ProfilUcenika from './pages/ProfilUcenika';
 
 import Sidebar from './components/Sidebar'; // sidebar sa menijem
 
@@ -49,6 +50,8 @@ function AppContent() {
                     <Route path="/MojProfil" element={<PrivateRoute><MojProfil /></PrivateRoute>} />
                     <Route path="/resetpassword" element={<PrivateRoute><ResetPassword /></PrivateRoute>} />
                     <Route path="/ZaboravljenaSifra" element={<ZaboravljenaSifra />} />
+                    <Route path="/MojiUcenici" element={<PrivateRoute><MojiUcenici /></PrivateRoute>} />
+                    <Route path="/ProfilUcenika/:id" element={<PrivateRoute><ProfilUcenika /></PrivateRoute>} />
                 </Routes>
             </div>
         </>

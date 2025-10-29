@@ -75,7 +75,7 @@ export default function Sidebar() {
                             <ListItemText primary="Moj Profil" />
                         </ListItemButton>
 
-                        <ListItemButton component={Link} to="/ListaUcenikaV2" selected={location.pathname === "/ListaUcenikaV2"} sx={navButtonStyle(location.pathname, "/ListaUcenikaV2")}>
+                        <ListItemButton component={Link} to="/MojiUcenici" selected={location.pathname === "/MojiUcenici"} sx={navButtonStyle(location.pathname, "/ListaUcenikaV2")}>
                             <ListItemText primary="Moji Učenici" />
                         </ListItemButton>
                         <ListItemButton component={Link} to="/Dokumenti" selected={location.pathname === "/Dokumenti"} sx={navButtonStyle(location.pathname, "/Dokumenti")}>
@@ -113,7 +113,7 @@ export default function Sidebar() {
 
                                 <Collapse in={openUcenici} timeout="auto" unmountOnExit>
                                     <List component="div" disablePadding sx={{ pl: 2 }}>
-                                        <ListItemButton component={Link} to="/ListaUcenika" selected={location.pathname === "/ListaUcenika"} sx={navButtonStyle(location.pathname, "/ListaUcenika")}>
+                                        <ListItemButton component={Link} to="/ListaUcenikaV2" selected={location.pathname === "/ListaUcenikaV2"} sx={navButtonStyle(location.pathname, "/ListaUcenika")}>
                                             <ListItemText primary="Lista učenika" />
                                         </ListItemButton>
                                         <ListItemButton component={Link} to="/DodajUcenika" selected={location.pathname === "/DodajUcenika"} sx={navButtonStyle(location.pathname, "/DodajUcenika")}>

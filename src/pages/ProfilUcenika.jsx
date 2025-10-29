@@ -2,35 +2,31 @@
 import { Box, Typography, Chip, Link } from '@mui/material';
 import { supabase } from '../lib/supabaseClient';
 import { useParams } from 'react-router-dom';
-import { DataGrid } from '@mui/x-data-grid';
-
-import ListaUcenikaNastavnika from '../components/ListaUcenikaNastavnika';
 
 export default function ProfilNastavnika() {
-    const { id } = useParams(); // uzima id iz url-a
-    
-    const [nastavnik, setNastavnik] = useState(null);
+	const { id } = useParams(); // uzima id iz url-a
+	const [ucenik, setUcenik] = useState(null);
 
-    useEffect(() => {
-        const fetchNastavnik = async () => {
-            const { data, error } = await supabase
-                .from('nastavnici')
-                .select('*')
-                .eq('id', id)
-                .single();
+	useEffect(() => {
+		const fetchUcenik = async () => {
+			const { data, error } = await supabase
+				.from('ucenici')
+				.select('*')
+				.eq('id', id)
+				.single();
 
-            if (error) {
-                console.error('Greska pri ucitavanju:', error.message);
-            } else {
-                setNastavnik(data);
-            }
+			if (error) {
+				console.error('Greska pri ucitavanju:', error.message);
+			} else {
+				setUcenik(data);
+			}
 
-        };
+		};
 
-        fetchNastavnik();
-    }, [id]);
+		fetchUcenik();
+	}, [id]);
 
-    if (!nastavnik) return <div>Ucitavanje...</div>
+	if (!ucenik) return <div>Ucitavanje...</div>
 
     return (
         <Box
@@ -46,7 +42,7 @@ export default function ProfilNastavnika() {
             }}
         >
             <Typography variant="h5" gutterBottom>
-                Profil nastavnika:
+                ProfilUcenika:
             </Typography>
 
             <Box
@@ -61,7 +57,7 @@ export default function ProfilNastavnika() {
                 <Typography variant="subtitle2" color="text.secondary">
                     Ime i prezime
                 </Typography>
-                <Typography variant="h6">{nastavnik.ime}</Typography>
+                <Typography variant="h6">{ucenik.ime}</Typography>
             </Box>
 
             <Box
@@ -76,7 +72,7 @@ export default function ProfilNastavnika() {
                 <Typography variant="subtitle2" color="text.secondary">
                     Instrument
                 </Typography>
-                <Typography variant="h6">{nastavnik.instrument}</Typography>
+                <Typography variant="h6">{ucenik.instrument}</Typography>
             </Box>
 
             <Box
@@ -91,7 +87,7 @@ export default function ProfilNastavnika() {
                 <Typography variant="subtitle2" color="text.secondary">
                     Kontakt
                 </Typography>
-                <Typography variant="h6">{nastavnik.kontakt}</Typography>
+                <Typography variant="h6">{ucenik.kontakt}</Typography>
             </Box>
 
             <Box
@@ -106,12 +102,12 @@ export default function ProfilNastavnika() {
                 <Typography variant="subtitle2" color="text.secondary">
                     Email:
                 </Typography>
-                <Typography variant="h6">{nastavnik.email}</Typography>
+                <Typography variant="h6">{ucenik.email}</Typography>
             </Box>
-
+            
             <Box
                 sx={{
-
+                    
                     maxWidth: 300,
                     backgroundColor: '#f9f9f9',
                     borderRadius: 2,
@@ -123,39 +119,35 @@ export default function ProfilNastavnika() {
                 <Typography variant="subtitle2" color="text.secondary">
                     JMBG:
                 </Typography>
-                <Typography variant="h6">{nastavnik.jmbg}</Typography>
+                <Typography variant="h6">{ucenik.jmbg}</Typography>
             </Box>
 
-
-
-
+            
 
             <Box mt={2}>
                 <Typography><strong>Status plana:</strong></Typography>
-                <Chip label={nastavnik.status || 'Nije Spreman'} color={nastavnik.status === 'Spreman' ? 'success' : 'error'} />
+                <Chip label={ucenik.status || 'Nije Spreman'} color={ucenik.status === 'Spreman' ? 'success' : 'error'} />
             </Box>
 
             <Box mt={2}>
                 <Typography><strong>Plan i program:</strong></Typography>
 
-                {nastavnik.status === 'Nije Spreman' || !nastavnik.status ? (
+                {ucenik.status === 'Nije Spreman' || !ucenik.status ? (
                     <Typography variant="h7" gutterBottom>
                         Nije Spreman Plan.
                     </Typography>
 
                 ) : (
-                    <Link href={nastavnik.plan_link || '#'} target="_blank">
-                        Otvori plan
-                    </Link>
+                        <Link href={ucenik.plan_link || '#'} target="_blank">
+                            Otvori plan
+                        </Link>
                 )
-
-
-
+                
+                
+                    
                 }
-
+                
             </Box>
-              <ListaUcenikaNastavnika nastavnik_uuid={id} />
-
-            </Box>        
+        </Box>
     );
 }
