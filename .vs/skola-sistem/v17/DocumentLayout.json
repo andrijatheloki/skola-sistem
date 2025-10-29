@@ -38,8 +38,7 @@
               "RelativeToolTip": "src\\index.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-28T20:20:16.471Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-28T20:20:16.471Z"
             },
             {
               "$type": "Document",
@@ -47,9 +46,9 @@
               "Title": "Sidebar.jsx",
               "DocumentMoniker": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\Sidebar.jsx",
               "RelativeDocumentMoniker": "src\\components\\Sidebar.jsx",
-              "ToolTip": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\Sidebar.jsx",
-              "RelativeToolTip": "src\\components\\Sidebar.jsx",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAQwCoAAAARAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Loki\\Desktop\\skola-sistem\\src\\components\\Sidebar.jsx*",
+              "RelativeToolTip": "src\\components\\Sidebar.jsx*",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAAAGIAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2025-10-28T20:10:40.552Z",
               "EditorCaption": ""
@@ -64,8 +63,7 @@
               "RelativeToolTip": "src\\App.js",
               "ViewState": "AgIAABIAAAAAAAAAAAAAADwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-28T20:00:09.175Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-28T20:00:09.175Z"
             }
           ]
         }

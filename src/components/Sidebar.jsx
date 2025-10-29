@@ -1,8 +1,10 @@
 ﻿import React from 'react';
 import { Drawer, List, ListItemButton, ListItemText, ListSubheader, Collapse } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
+
+import { supabase } from '../lib/supabaseClient';
 
 
 
@@ -19,15 +21,25 @@ export default function Sidebar() {
         }
     });
 
-
+    const navigate = useNavigate();
 
 
     const { role } = useUser();
     const location = useLocation();
+    const handleLogout = async () => {
+        await supabase.auth.signOut()
+        navigate('/Login')
+    }
 
-    const [openAdmin, setOpenAdmin] = React.useState(false);
+
+    const [openAdmin, setOpenAdmin] = React.useState(true);
+    const [openUcenici, setOpenUcenici] = React.useState(false);
+    const [openNastavnici, setOpenNastavnici] = React.useState(false);
 
     const toggleAdmin = () => setOpenAdmin(!openAdmin);
+    const toggleUcenici = () => setOpenUcenici(!openUcenici);
+    const toggleNastavnici = () => setOpenNastavnici(!openNastavnici);
+
 
     return (
         <Drawer
@@ -43,25 +55,26 @@ export default function Sidebar() {
                 }
             }}
         >
-           
 
 
-          
+
+
 
             <List component="nav" subheader={<ListSubheader>Pozdrav!</ListSubheader>}>
-                <ListItemButton component={Link} to="/Pocetna" selected={location.pathname === "/Pocetna"} sx={navButtonStyle(location.pathname, "/Pocetna")}>
-                    <ListItemText primary="Pocetna" />
-                </ListItemButton>
 
 
 
-
-                <ListItemButton component={Link} to="/MojProfil" selected={location.pathname === "/MojProfil"} sx={navButtonStyle(location.pathname, "/MojProfil")}>
-                    <ListItemText primary="Moj Profil" />
-                </ListItemButton>
-
-                {role !== 'admin' && (
+                {role === 'nastavnik' &&(
+                    
                     <>
+                        <ListItemButton component={Link} to="/Pocetna" selected={location.pathname === "/Pocetna"} sx={navButtonStyle(location.pathname, "/Pocetna")}>
+                            <ListItemText primary="Pocetna" />
+                        </ListItemButton>
+
+                        <ListItemButton component={Link} to="/MojProfil" selected={location.pathname === "/MojProfil"} sx={{ ...navButtonStyle(location.pathname, "/MojProfil"), pl: 2 }}>
+                            <ListItemText primary="Moj Profil" />
+                        </ListItemButton>
+
                         <ListItemButton component={Link} to="/ListaUcenikaV2" selected={location.pathname === "/ListaUcenikaV2"} sx={navButtonStyle(location.pathname, "/ListaUcenikaV2")}>
                             <ListItemText primary="Moji Učenici" />
                         </ListItemButton>
@@ -69,36 +82,80 @@ export default function Sidebar() {
                             <ListItemText primary="Moji Planovi" />
                         </ListItemButton>
                     </>
+                    
+                    
+
                 )}
+
+
+                {/* Removed empty block for role !== 'admin' */}
 
                 {role === 'admin' && (
                     <>
-                        <ListItemButton onClick={toggleAdmin}>
+                        <ListItemButton component={Link} to="/PocetnaAdmin" selected={location.pathname === "/PocetnaAdmin"} sx={navButtonStyle(location.pathname, "/PocetnaAdmin")}>
+                            <ListItemText primary="Pocetna" />
+                        </ListItemButton>
+
+
+
+                        <ListItemButton onClick={toggleAdmin} sx={navButtonStyle(location.pathname, "")}>
                             <ListItemText primary="Administracija" />
                             {openAdmin ? <ExpandLess /> : <ExpandMore />}
                         </ListItemButton>
 
                         <Collapse in={openAdmin} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding sx={{ pl: 2 }}>
-                                <ListItemButton component={Link} to="/ListaNastavnika" selected={location.pathname === "/ListaNastavnika"} sx={navButtonStyle(location.pathname, "/ListaNastavnika")} >
-                                    <ListItemText primary="Lista nastavnika" />
+
+                                <ListItemButton onClick={toggleUcenici} sx={navButtonStyle(location.pathname, "")}>
+                                    <ListItemText primary="Ucenici" />
+                                    {openUcenici ? <ExpandLess /> : <ExpandMore />}
                                 </ListItemButton>
-                                <ListItemButton component={Link} to="/DodajNastavnika" selected={location.pathname === "/DodajNastavnika"}>
-                                    <ListItemText primary="Dodaj nastavnika" />
+
+                                <Collapse in={openUcenici} timeout="auto" unmountOnExit>
+                                    <List component="div" disablePadding sx={{ pl: 2 }}>
+                                        <ListItemButton component={Link} to="/ListaUcenika" selected={location.pathname === "/ListaUcenika"} sx={navButtonStyle(location.pathname, "/ListaUcenika")}>
+                                            <ListItemText primary="Lista učenika" />
+                                        </ListItemButton>
+                                        <ListItemButton component={Link} to="/DodajUcenika" selected={location.pathname === "/DodajUcenika"} sx={navButtonStyle(location.pathname, "/DodajUcenika")}>
+                                            <ListItemText primary="Dodaj učenika" />
+                                        </ListItemButton>
+                                    </List>
+                                </Collapse>
+
+                                <ListItemButton onClick={toggleNastavnici} sx={navButtonStyle(location.pathname, "")}>
+                                    <ListItemText primary="Nastavnici" />
+                                    {openNastavnici ? <ExpandLess /> : <ExpandMore />}
                                 </ListItemButton>
-                                <ListItemButton component={Link} to="/ListaUcenika" selected={location.pathname === "/ListaUcenika"}>
-                                    <ListItemText primary="Lista učenika" />
-                                </ListItemButton>
-                                <ListItemButton component={Link} to="/DodajUcenika" selected={location.pathname === "/DodajUcenika"}>
-                                    <ListItemText primary="Dodaj učenika" />
-                                </ListItemButton>
-                                <ListItemButton component={Link} to="/Dokumenti" selected={location.pathname === "/Dokumenti"}>
+
+                                <Collapse in={openNastavnici} timeout="auto" unmountOnExit>
+                                    <List component="div" disablePadding sx={{ pl: 2 }}>
+                                        <ListItemButton component={Link} to="/ListaNastavnika" selected={location.pathname === "/ListaNastavnika"} sx={navButtonStyle(location.pathname, "/ListaNastavnika")} >
+                                            <ListItemText primary="Lista nastavnika" />
+                                        </ListItemButton>
+                                        <ListItemButton component={Link} to="/DodajNastavnika" selected={location.pathname === "/DodajNastavnika"} sx={navButtonStyle(location.pathname, "/DodajNastavnika")}>
+                                            <ListItemText primary="Dodaj nastavnika" />
+                                        </ListItemButton>
+
+
+                                    </List>
+                                </Collapse>
+
+
+                                <ListItemButton component={Link} to="/Dokumenti" selected={location.pathname === "/Dokumenti"} sx={navButtonStyle(location.pathname, "/Dokumenti")}>
                                     <ListItemText primary="Dokumenti" />
                                 </ListItemButton>
                             </List>
                         </Collapse>
                     </>
                 )}
+
+                <ListItemButton onClick={handleLogout} variant="outlined" color="primary" sx={navButtonStyle(location.pathname, "")}>
+                    <ListItemText primary="Logout" />
+
+                </ListItemButton>
+
+
+
             </List>
         </Drawer>
     );

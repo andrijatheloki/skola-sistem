@@ -16,6 +16,7 @@ import ProfilNastavnika from './pages/ProfilNastavnika';
 import MojProfil from './pages/MojProfil';
 import ResetPassword from './pages/resetpassword';
 import ZaboravljenaSifra from './pages/zaboravljenasifra';
+import PocetnaAdmin from './pages/PocetnaAdmin';
 
 import Sidebar from './components/Sidebar'; // sidebar sa menijem
 
@@ -36,6 +37,7 @@ function AppContent() {
                     <Route path="/Login" element={<Login />} />
                     <Route path="/" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
                     <Route path="/Pocetna" element={<PrivateRoute><Pocetna /></PrivateRoute>} />
+                    <Route path="/PocetnaAdmin" element={<PrivateRoute><PocetnaAdmin /></PrivateRoute>} />
                     <Route path="/DodajUcenika" element={<PrivateRoute><DodajUcenika /></PrivateRoute>} />
                     <Route path="/ListaUcenika" element={<PrivateRoute><ListaUcenika /></PrivateRoute>} />
                     <Route path="/ListaUcenikaV2" element={<PrivateRoute><ListaUcenikaV2 /></PrivateRoute>} />
