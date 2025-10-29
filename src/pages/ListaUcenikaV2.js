@@ -4,7 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Chip } from '@mui/material';
-
+import { Box } from '@mui/material';
 
 export default function ListaUcenika() {
     const [ucenici, setUcenici] = useState([]);
@@ -101,27 +101,29 @@ export default function ListaUcenika() {
     ];
 
     return (
-        <div style={{ height: 500, width: '100%', padding: '2rem' }}>
-            <h2>Lista Učenika</h2>
+    <Box sx={{ pl: 1, pr: 4, pt: 4, ml: '50px' }}>
+    <h2>Lista Učenika</h2>
 
-            <TextField
-                label="Pretraga"
-                variant="outlined"
-                fullWidth
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                sx={{ mb: 2 }}
-            />
+    <TextField
+        label="Pretraga"
+        variant="outlined"
+        fullWidth
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        sx={{ mb: 2 }}
+    />
 
-            <DataGrid
-                rows={filteredRows}
-                columns={columns}
-                getRowId={(row) => row.id} // veoma važno za Supabase ID
-                pageSize={10}
-                rowsPerPageOptions={[10]}
-                disableSelectionOnClick
-                autoHeight
-            />
-        </div>
+    <Box sx={{ overflowX: 'auto' }}>
+        <DataGrid
+            rows={filteredRows}
+            columns={columns}
+            getRowId={(row) => row.id}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+            disableSelectionOnClick
+            autoHeight
+        />
+    </Box>
+</Box>
     );
 }

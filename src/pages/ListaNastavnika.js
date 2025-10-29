@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { DataGrid } from '@mui/x-data-grid';
-import { TextField } from '@mui/material';
+import { TextField,Box } from '@mui/material';
 import { Chip } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -79,7 +79,7 @@ export default function ListaNastavnika() {
     ];
 
     return (
-        <div style={{ height: 500, width: '100%', padding: '2rem' }}>
+        <Box sx={{ pl: 1, pr: 4, pt: 4, ml: '50px' }}>
             <h2>Lista Nastavnika</h2>
 
             <TextField
@@ -100,6 +100,6 @@ export default function ListaNastavnika() {
                 disableSelectionOnClick
                 autoHeight
             />
-        </div>
+        </Box>
     );
 }
