@@ -31,12 +31,14 @@ export default function DodajUcenika() {
     }, []);
 
 
-    const handleSubmit = async (e) => { // Ucitavanje ucenika iz baze
+    const handleSubmit = async (e) => { // Upisivanje ucenika u bazu
         e.preventDefault();
+
 
         const { data, error } = await supabase
             .from('ucenici')
-            .insert([{ ime, prezime, instrument, nastavnik_uuid: izabraniNastavnik, jmbg,email, kontakt, razred: parseInt(razred) }]);
+            .insert([{ ime, prezime, instrument, jmbg, email, kontakt, razred: parseInt(razred) }])
+            .select();
 
         if (error) {
             console.error(error.message);
@@ -49,6 +51,26 @@ export default function DodajUcenika() {
             setRazred('');
 
         }
+
+        const noviUcenik_id = data[0].id;
+
+        const { data: UcenikNastavnikData, error: UcenikNastavnikError } = await supabase
+            .from('uceniknastavnikpredmet')
+            .insert([{ nastavnik_id: izabraniNastavnik, ucenik_id: noviUcenik_id, predmet: instrument }])
+            
+
+        if (UcenikNastavnikError) {
+            console.error(UcenikNastavnikError.message);
+        } else {
+            console.log('Ucenik-nastavnik-predmet veza uspesno kreirana:', UcenikNastavnikData);
+        }
+    
+    
+
+
+
+
+
     }
     return (
         <Box
@@ -81,7 +103,7 @@ export default function DodajUcenika() {
                     onChange={(e) => setPrezime(e.target.value)}
                     required
                 /> */}
-                
+
                 <FormControl fullWidth margin="normal" required>
                     <InputLabel>Instrument</InputLabel>
                     <Select

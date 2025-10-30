@@ -3,8 +3,17 @@ import { Box, Typography, Chip, Link } from '@mui/material';
 import { supabase } from '../lib/supabaseClient';
 import { useParams } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
+import Grid from '@mui/material/Grid';
 
-import ListaUcenikaNastavnika from '../components/ListaUcenikaNastavnika';
+
+// Profil nastavnika stranica /components/nastavnici
+import ProfilBox from '../components/Nastavnici/ProfilBox.jsx';
+import StatusPlanaBox from '../components/Nastavnici/StatusPlanaBox.jsx';
+import ListaUcenikaBox from '../components/Nastavnici/ListaUcenikaBox.jsx';
+
+
+
+import ListaUcenikaNastavnika from '../components/ListaUcenikaOdNastavnika.jsx';
 
 export default function ProfilNastavnika() {
     const { id } = useParams(); // uzima id iz url-a
@@ -31,131 +40,25 @@ export default function ProfilNastavnika() {
     }, [id]);
 
     if (!nastavnik) return <div>Ucitavanje...</div>
+    
 
     return (
-        <Box
-            sx={{
-                maxWidth: 1000,
-                mx: 'auto',
-                mt: 4,
-                p: 3,
-                border: '2px solid #ccc',
-                borderRadius: 2,
-                boxShadow: 2,
-                backgroundColor: '#fff',
-            }}
-        >
-            <Typography variant="h5" gutterBottom>
-                Profil nastavnika:
-            </Typography>
+        <Box sx={{ flexGrow: 1, mt: 4, px: 3 }}>
+            <Grid container spacing={3}>
+                <Grid item xs={12} md={4}>
+                    <ProfilBox nastavnik={nastavnik} />
+                </Grid>
 
-            <Box
-                sx={{
-                    backgroundColor: '#f9f9f9',
-                    borderRadius: 2,
-                    p: 1,
-                    mb: 2,
-                    boxShadow: 1,
-                }}
-            >
-                <Typography variant="subtitle2" color="text.secondary">
-                    Ime i prezime
-                </Typography>
-                <Typography variant="h6">{nastavnik.ime}</Typography>
-            </Box>
+                <Grid item xs={12} md={4}>
+                    <ListaUcenikaBox nastavnik={id} />
+                </Grid>
 
-            <Box
-                sx={{
-                    backgroundColor: '#f9f9f9',
-                    borderRadius: 2,
-                    p: 1,
-                    mb: 1,
-                    boxShadow: 1,
-                }}
-            >
-                <Typography variant="subtitle2" color="text.secondary">
-                    Instrument
-                </Typography>
-                <Typography variant="h6">{nastavnik.instrument}</Typography>
-            </Box>
-
-            <Box
-                sx={{
-                    backgroundColor: '#f9f9f9',
-                    borderRadius: 2,
-                    p: 1,
-                    mb: 1,
-                    boxShadow: 1,
-                }}
-            >
-                <Typography variant="subtitle2" color="text.secondary">
-                    Kontakt
-                </Typography>
-                <Typography variant="h6">{nastavnik.kontakt}</Typography>
-            </Box>
-
-            <Box
-                sx={{
-                    backgroundColor: '#f9f9f9',
-                    borderRadius: 2,
-                    p: 1,
-                    mb: 1,
-                    boxShadow: 1,
-                }}
-            >
-                <Typography variant="subtitle2" color="text.secondary">
-                    Email:
-                </Typography>
-                <Typography variant="h6">{nastavnik.email}</Typography>
-            </Box>
-
-            <Box
-                sx={{
-
-                    maxWidth: 300,
-                    backgroundColor: '#f9f9f9',
-                    borderRadius: 2,
-                    p: 1,
-                    mb: 1,
-                    boxShadow: 1,
-                }}
-            >
-                <Typography variant="subtitle2" color="text.secondary">
-                    JMBG:
-                </Typography>
-                <Typography variant="h6">{nastavnik.jmbg}</Typography>
-            </Box>
-
-
-
-
-
-            <Box mt={2}>
-                <Typography><strong>Status plana:</strong></Typography>
-                <Chip label={nastavnik.status || 'Nije Spreman'} color={nastavnik.status === 'Spreman' ? 'success' : 'error'} />
-            </Box>
-
-            <Box mt={2}>
-                <Typography><strong>Plan i program:</strong></Typography>
-
-                {nastavnik.status === 'Nije Spreman' || !nastavnik.status ? (
-                    <Typography variant="h7" gutterBottom>
-                        Nije Spreman Plan.
-                    </Typography>
-
-                ) : (
-                    <Link href={nastavnik.plan_link || '#'} target="_blank">
-                        Otvori plan
-                    </Link>
-                )
-
-
-
-                }
-
-            </Box>
-              <ListaUcenikaNastavnika nastavnik_uuid={id} />
-
-            </Box>        
+                <Grid item xs={12} md={4}>
+                    <StatusPlanaBox status={nastavnik.status} link={nastavnik.plan_link} />
+                </Grid>
+            </Grid>
+        </Box>
+        
+               
     );
 }
