@@ -1,7 +1,8 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { Box, Typography, Chip, Link } from '@mui/material';
+import { Box, Typography, Chip,} from '@mui/material';
 import { supabase } from '../lib/supabaseClient';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function ProfilNastavnika() {
 	const { id } = useParams(); // uzima id iz url-a
@@ -128,6 +129,18 @@ export default function ProfilNastavnika() {
                 <Typography><strong>Status ucenika:</strong></Typography>
                 <Chip label={ucenik.status || 'Aktivan'} color={ucenik.status === 'Aktivan' ? 'success' : 'error'} />
             </Box>
+            
+            <Link to={`/izmeniucenika/${ucenik.id}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
+                            <h7>Izmeni Ucenika:</h7>
+                            
+                        </Link>
+                        
+            <Box mt={2}>
+                <Typography><strong>Izmeni Ucenika:</strong></Typography>
+                  link to={`/izmeni-ucenika/${ucenik.id}`}
+                <Chip label={ucenik.status || 'Aktivan'} color={ucenik.status === 'Aktivan' ? 'success' : 'error'} />
+            </Box>
+
 
             
         </Box>

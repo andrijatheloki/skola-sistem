@@ -18,6 +18,7 @@ import ZaboravljenaSifra from './pages/zaboravljenasifra';
 import PocetnaAdmin from './pages/PocetnaAdmin';
 import MojiUcenici from './pages/MojiUcenici';
 import ProfilUcenika from './pages/ProfilUcenika';
+import IzmeniUcenika from './pages/IzmeniUcenika';
 
 import Sidebar from './components/Sidebar'; // sidebar sa menijem
 
@@ -52,6 +53,7 @@ function AppContent() {
                     <Route path="/ZaboravljenaSifra" element={<ZaboravljenaSifra />} />
                     <Route path="/MojiUcenici" element={<PrivateRoute><MojiUcenici /></PrivateRoute>} />
                     <Route path="/ProfilUcenika/:id" element={<PrivateRoute><ProfilUcenika /></PrivateRoute>} />
+                    <Route path="/IzmeniUcenika/:id" element={<PrivateRoute><IzmeniUcenika /></PrivateRoute>} />
                 </Routes>
             </div>
         </>

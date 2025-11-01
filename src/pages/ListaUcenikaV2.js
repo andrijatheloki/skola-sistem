@@ -14,38 +14,36 @@ export default function ListaUcenika() {
     // Ucitavanje iz baze kad se stranica otvori
     useEffect(() => {
         const fetchUcenici = async () => { // Ucenici
-            const { data: uceniciData, error: uceniciError } = await supabase.from('ucenici').select('*');
+            const { data: uceniciData, error: uceniciError } = await supabase
+                .from('uceniknastavnikveza')
+                .select(`id,
+                ucenici (id, ime, razred, instrument, kontakt, jmbg),
+                nastavnici (id, ime),
+                predmet_razred (id, predmet, razred )
+                
+                `);
+
+
+
             if (uceniciError) {
                 console.error('Greška pri učitavanju:', uceniciError.message);
             } else {
-                setUcenici(uceniciData);
+                const formattedUcenici = uceniciData.map((veza) => ({
+                    id: veza.ucenici?.id || veza.id,
+                    ime: veza.ucenici?.ime || 'Nepoznat',
+                    razred: veza.predmet_razred?.razred || 'Nepoznat',
+                    // instrument: veza.ucenici?.instrument || 'Nepoznat',
+                    instrument: veza.predmet_razred?.predmet || 'Nepoznat',
+                    kontakt: veza.ucenici?.kontakt || 'Nepoznat',
+                    jmbg: veza.ucenici?.jmbg || 'Nepoznat',
+                    nastavnik_ime: veza.nastavnici?.ime || 'Nepoznat',
+                    nastavnik_id: veza.nastavnici?.id || null,
+
+                }));
+
+                console.log("predmet_razred data:", uceniciData);
+                setUcenici(formattedUcenici);
             }
-
-
-            const { data: nastavniciData, error: nastavniciError } = await supabase.from('nastavnici').select('id, ime'); // Nastavnici
-
-            const { data: UcenikNastavnikData, error: UcenikNastavnikError } = await supabase.from('uceniknastavnikpredmet').select('ucenik_id, nastavnik_id'); // predmet izmedju ucenika i nastavnika
-
-
-            if (uceniciError || nastavniciError) {
-                console.error('Greška pri učitavanju:', nastavniciError?.message || uceniciError?.message);
-            }
-
-            const povezani = uceniciData.map((ucenik) => {
-                const veza = UcenikNastavnikData.find(v => v.ucenik_id === ucenik.id);
-                const nastavnik = nastavniciData.find(n => n.id === veza?.nastavnik_id);
-
-                return {
-                    ...ucenik, // sve iz baze ostaje
-                    nastavnik_ime: nastavnik ? nastavnik.ime : 'Nepoznat', // ovo je novo polje
-                    nastavnik_id: nastavnik ? nastavnik.id : null 
-                };
-            });
-
-
-            setUcenici(povezani);
-
-
 
         };
 

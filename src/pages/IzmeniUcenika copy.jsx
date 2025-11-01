@@ -2,6 +2,7 @@
 import { supabase } from '../lib/supabaseClient';
 import { Box, TextField, Button, MenuItem, FormControl, InputLabel, Select } from '@mui/material';
 import Instrumenti from '../components/Instrumenti';
+import { useParams } from 'react-router-dom';
 
 export default function DodajUcenika() {
     const [ime, setIme] = useState('');
@@ -9,7 +10,6 @@ export default function DodajUcenika() {
     const [razred, setRazred] = useState('');
     const [instrument, setInstrument] = useState('');
     const [jmbg, setJMBG] = useState('');
-    const [klasa, setKlasa] = useState('');
     const [kontakt, setKontakt] = useState('');
     const [poruka, setPoruka] = useState('');
     const [nastavnici, setNastavnici] = useState([]);
@@ -17,8 +17,13 @@ export default function DodajUcenika() {
     const [email, setEmail] = useState('');
     const [predmet, setPredmet] = useState([]);
     const [izabraniPredmet, setIzabraniPredmet] = useState('');
+    const [veze,setVeze] = useState([]);
+
+    const { id } = useParams();  // uzima id unika iz url-a za edit
+
 
     useEffect(() => {
+
         const fetchNastavnici = async () => { // Ucitavanje nastavnika za padajucu listu
             const { data, error } = await supabase.from('nastavnici').select('*');
             if (error) {
@@ -29,21 +34,91 @@ export default function DodajUcenika() {
 
         };
 
-        const fetchPredmeti= async () => { // Ucitavanje predmeta za padajucu listu
+        const fetchPredmeti = async () => { // Ucitavanje predmeta za padajucu listu
             const { data: predmetData, error: predmetError } = await supabase.from('predmet_razred').select('*');
             if (predmetError) {
                 console.error('Greška pri učitavanju:', predmetError.message);
             } else {
                 setPredmet(predmetData);
             }
-        console.log("Fetched predmet data:", predmetData);
+            console.log("Fetched predmet data:", predmetData);
 
         };
 
+        const fetchVeze = async () => {
+            const { data: vezeData, error: vezeError } = await supabase
+            .from('uceniknastavnikveza')
+            .select(`id,
+                    ucenici (id, ime, razred, instrument, kontakt, jmbg, email),
+                    nastavnici (id, ime),
+                    predmet_razred (id, predmet, razred )
+                `)
+            .eq('ucenik_id', id);
+
+            if (vezeError) {
+                console.error('Greška pri učitavanju veza:', vezeError.message);
+            } else {
+                setVeze(vezeData);
+                const veza = vezeData;
+                setIme(veza.ucenici?.ime || '');
+                setRazred(veza.predmet_razred?.razred || '');
+                setInstrument(veza.predmet_razred?.predmet || '');
+                setJMBG(veza.ucenici?.jmbg || '');
+                setEmail(veza.ucenici?.email || '');
+                setKontakt(veza.ucenici?.kontakt || '');
+                setIzabraniNastavnik(veza.nastavnici?.id || null);
+                setIzabraniPredmet(veza.predmet_razred?.id || null);
+
+                console.log("Fetched ucenik data for edit:", uceniciData);
 
 
+
+
+
+                console.log("Fetched veze data for edit:", vezeData);
+            }
+            
+
+        // const fetchUcenici = async () => {
+        //     const { data: uceniciData, error: uceniciError } = await supabase
+        //         .from('uceniknastavnikveza')
+        //         .select(`id,
+        //             ucenici (id, ime, razred, instrument, kontakt, jmbg, email),
+        //             nastavnici (id, ime),
+        //             predmet_razred (id, predmet, razred )
+        //         `)
+        //         .eq('ucenik_id', id)
+                
+
+        //     if (uceniciError) {
+        //         console.error('Greška pri učitavanju:', uceniciError.message);
+        //     } else {
+
+        //         const veza = uceniciData;
+        //         setIme(veza.ucenici?.ime || '');
+        //         setRazred(veza.predmet_razred?.razred || '');
+        //         setInstrument(veza.predmet_razred?.predmet || '');
+        //         setJMBG(veza.ucenici?.jmbg || '');
+        //         setEmail(veza.ucenici?.email || '');
+        //         setKontakt(veza.ucenici?.kontakt || '');
+        //         setIzabraniNastavnik(veza.nastavnici?.id || null);
+        //         setIzabraniPredmet(veza.predmet_razred?.id || null);
+
+        //         console.log("Fetched ucenik data for edit:", uceniciData);
+
+        //     }
+        // }
+
+
+
+
+
+
+        fetchUcenici();
         fetchNastavnici();
         fetchPredmeti();
+        fetchVeze();
+
     }, []);
 
 
@@ -53,7 +128,8 @@ export default function DodajUcenika() {
 
         const { data, error } = await supabase
             .from('ucenici')
-            .insert([{ ime, prezime, instrument, jmbg, email, kontakt, razred: parseInt(razred) }])
+            .update([{ ime, prezime, instrument, jmbg, email, kontakt, razred: parseInt(razred) }])
+            .eq('id', id)
             .select();
 
         if (error) {
@@ -62,9 +138,15 @@ export default function DodajUcenika() {
 
 
         } else {
-            setPoruka('Ucenik uspesno dodat!');
+            setPoruka('Ucenik uspesno izmenjen!');
             setIme('');
             setRazred('');
+            setInstrument('');
+            setJMBG('');
+            setKontakt('');
+            setEmail('');
+            setIzabraniNastavnik('');
+            setIzabraniPredmet('');
 
         }
 
@@ -72,16 +154,17 @@ export default function DodajUcenika() {
 
         const { data: UcenikNastavnikData, error: UcenikNastavnikError } = await supabase
             .from('uceniknastavnikveza')
-            .insert([{ nastavnik_id: izabraniNastavnik, ucenik_id: noviUcenik_id, predmet_razred_id: izabraniPredmet }])
-            
+            .update([{ nastavnik_id: izabraniNastavnik, predmet_razred_id: izabraniPredmet }])
+            .eq('ucenik_id', id)
+
 
         if (UcenikNastavnikError) {
             console.error(UcenikNastavnikError.message);
         } else {
             console.log('Ucenik-nastavnik-predmet veza uspesno kreirana:', UcenikNastavnikData);
         }
-    
-    
+
+
 
 
 
@@ -129,13 +212,13 @@ export default function DodajUcenika() {
                     >
                         {predmet.map((predm) => (
                             <MenuItem key={predm.id} value={predm.id}>
-                                {predm.predmet}
+                                {`${predm.predmet} – ${predm.razred}. razred`}
                             </MenuItem>
                         ))}
                     </Select>
                 </FormControl>
 
-                        
+
 
                 <FormControl fullWidth margin="normal" required>
                     <InputLabel>Nastavnik</InputLabel>
